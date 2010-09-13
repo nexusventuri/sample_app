@@ -4,7 +4,15 @@ SampleApp::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
 
-  get "users/new"
+  # resources implicitely add the following:
+  #GET	/users	index	users_path	page to list all users
+  #GET	/users/1	show	user_path(1)	page to show user with id 1
+  #GET	/users/new	new	new_user_path	page to make a new user (signup)
+  #POST	/users	create	users_path	create a new user
+  #GET	/users/1/edit	edit	edit_user_path(1)	page to edit user with id 1
+  #PUT	/users/1	update	user_path(1)	update user with id 1
+  #DELETE	/users/1	destroy	user_path(1)	delete user with id 1
+  resources :users
   match '/signup',    :to => 'users#new'
 
   # The priority is based upon order of creation:
